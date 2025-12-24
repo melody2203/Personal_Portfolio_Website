@@ -4,6 +4,7 @@ import Home from './sections/Home';
 import About from './sections/About';
 import Portfolio from './sections/Portfolio';
 import Services from './sections/Services';
+import Contact from './sections/Contact';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <About />
         <Portfolio />
         <Services />
-        {/* Other sections will be added here */}
+        <Contact />
       </main>
 
       <footer className="py-12 border-t border-slate-200 dark:border-slate-800">
