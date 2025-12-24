@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './sections/Home';
+import About from './sections/About';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <main>
         <Home />
+        <About />
         {/* Other sections will be added here */}
       </main>
 
