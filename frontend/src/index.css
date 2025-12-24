@@ -78,6 +78,13 @@ h6 {
   box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
 }
 
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
