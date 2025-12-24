@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './sections/Home';
 import About from './sections/About';
 import Portfolio from './sections/Portfolio';
+import Services from './sections/Services';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Home />
         <About />
         <Portfolio />
+        <Services />
         {/* Other sections will be added here */}
       </main>
 
