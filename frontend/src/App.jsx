@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './sections/Home';
 import About from './sections/About';
+import Portfolio from './sections/Portfolio';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <main>
         <Home />
         <About />
+        <Portfolio />
         {/* Other sections will be added here */}
       </main>
 
