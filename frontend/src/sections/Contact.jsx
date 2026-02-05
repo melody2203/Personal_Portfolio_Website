@@ -18,8 +18,9 @@ const Contact = () => {
         setStatus({ type: '', msg: '' });
 
         try {
-            // Backend URL - Adjust based on environment
-            const response = await axios.post('http://localhost:5000/api/contact', formData);
+            // Backend URL - Set via environment variable VITE_API_BASE_URL
+            const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+            const response = await axios.post(`${API_BASE_URL}/api/contact`, formData);
             if (response.status === 200) {
                 setStatus({ type: 'success', msg: 'Message sent successfully! I will get back to you soon.' });
                 setFormData({ name: '', email: '', message: '' });

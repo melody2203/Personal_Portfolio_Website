@@ -39,7 +39,7 @@ const Portfolio = () => {
             title: "Password Strength Checker",
             description: "A tool that analyzes password complexity and provides security recommendations.",
             tech: ["Python", "Flask", "Security APIs"],
-            github: "#",
+            github: "https://github.com/melody2203/PSC_project.git",
             live: "#",
             image: "/projects/password-checker.jpg",
             type: "cyber"

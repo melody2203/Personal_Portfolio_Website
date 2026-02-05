@@ -12,7 +12,7 @@ const ProjectCard = ({ project, index }) => {
             viewport={{ once: true }}
         >
             {/* Project Image */}
-            <div className="relative h-80 bg-slate-900 overflow-hidden flex items-center justify-center">
+            <div className="relative h-64 bg-slate-900 overflow-hidden flex items-center justify-center">
                 {project.image ? (
                     <img
                         src={project.image}
