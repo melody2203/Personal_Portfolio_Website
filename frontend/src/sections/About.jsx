@@ -25,7 +25,7 @@ const About = () => {
         {
             icon: <Heart className="text-pink-500" size={32} />,
             title: "Interests",
-            description: "Combining creativity with logic to solve complex problems and create meaningful impact.",
+            description: "Outside of tech, I enjoy listening to music and playing the guitar, which helps me stay creative and inspired.",
             delay: 0.4
         }
     ];
@@ -41,10 +41,8 @@ const About = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-                    <div className="w-20 h-1.5 bg-blue-500 mx-auto rounded-full mb-8"></div>
                     <p className="max-w-3xl mx-auto text-lg text-secondary">
-                        I'm a developer who loves to explore the intersection of functionality and security.
-                        My goal is to build applications that are not only beautiful and fast but also resilient against modern threats.
+                        I’m a developer who loves creating unique and visually engaging applications, exploring different sides of technology beyond just writing code. I enjoy experimenting with ideas, learning new tools, and building products that feel both functional and thoughtfully designed.
                     </p>
                 </motion.div>
 
@@ -58,9 +56,7 @@ const About = () => {
                             transition={{ delay: card.delay, duration: 0.5 }}
                             viewport={{ once: true }}
                         >
-                            <div className="mb-6 group-hover:scale-110 transition-transform duration-300">
-                                {card.icon}
-                            </div>
+                            {card.icon}
                             <h3 className="text-xl font-bold mb-4">{card.title}</h3>
                             <p className="text-secondary leading-relaxed">
                                 {card.description}

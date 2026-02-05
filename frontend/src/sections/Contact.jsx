@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, GitHub, Linkedin, Send, User, MessageSquare } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, User, MessageSquare } from 'lucide-react';
 import axios from 'axios';
 
 const Contact = () => {
@@ -32,8 +32,8 @@ const Contact = () => {
     };
 
     const socialLinks = [
-        { icon: <Mail size={24} />, href: 'mailto:merertu@example.com', label: 'Email' },
-        { icon: <GitHub size={24} />, href: 'https://github.com/melody2203', label: 'GitHub' },
+        { icon: <Mail size={24} />, href: 'mailto:merertuphilip@gmail.com', label: 'Email' },
+        { icon: <Github size={24} />, href: 'https://github.com/melody2203', label: 'GitHub' },
         { icon: <Linkedin size={24} />, href: 'https://linkedin.com', label: 'LinkedIn' },
     ];
 
@@ -48,109 +48,129 @@ const Contact = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
-                    <div className="w-20 h-1.5 bg-blue-500 mx-auto rounded-full mb-8"></div>
                     <p className="max-w-xl mx-auto text-secondary text-lg">
                         Have a question or want to work together? Drop me a message below!
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    {/* Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
-                        <p className="text-secondary mb-8 text-lg">
-                            I am always open to discussing new projects, creative ideas, or opportunities for internships.
-                        </p>
+                <div className="max-w-6xl mx-auto space-y-12">
+                    {/* Contact Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        {/* Contact Info */}
+                        <motion.div
+                            className="lg:col-span-5 space-y-8"
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true }}
+                        >
+                            <div>
+                                <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
+                                <p className="text-secondary mb-8 text-lg leading-relaxed">
+                                    I am always open to discussing new projects, creative ideas, or opportunities for internships.
+                                </p>
+                            </div>
 
-                        <div className="flex flex-col gap-6 mb-12">
-                            {socialLinks.map((link, index) => (
-                                <a
-                                    key={index}
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-4 group hover:text-blue-500 transition-colors"
-                                >
-                                    <div className="p-3 glass rounded-xl group-hover:scale-110 transition-transform">
-                                        {link.icon}
+                            <div className="flex flex-row flex-wrap gap-4 overflow-visible">
+                                {socialLinks.map((link, index) => (
+                                    <a
+                                        key={index}
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-5 glass rounded-2xl group hover:border-cyan-500/50 hover:scale-110 transition-all shadow-xl"
+                                        aria-label={link.label}
+                                    >
+                                        <div className="group-hover:scale-110 transition-transform">
+                                            {React.cloneElement(link.icon, { className: "text-cyan-500", size: 28 })}
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Contact Form */}
+                        <motion.div
+                            className="lg:col-span-7 glass p-10 rounded-[2.5rem]"
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true }}
+                        >
+                            <form onSubmit={handleSubmit} className="space-y-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="relative">
+                                        <span className="block text-sm font-semibold mb-2 ml-1">Full Name</span>
+                                        <div className="relative">
+                                            <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                placeholder="John Doe"
+                                                required
+                                                value={formData.name}
+                                                onChange={handleChange}
+                                                className="w-full bg-secondary border border-transparent focus:border-blue-500 rounded-2xl py-4 pl-12 pr-4 outline-none transition-all shadow-inner"
+                                            />
+                                        </div>
                                     </div>
-                                    <span className="font-medium text-lg">{link.label}</span>
-                                </a>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Contact Form */}
-                    <motion.div
-                        className="glass p-8 rounded-3xl"
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="relative">
-                                <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Your Name"
-                                    required
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-                                />
-                            </div>
-                            <div className="relative">
-                                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Your Email"
-                                    required
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-                                />
-                            </div>
-                            <div className="relative">
-                                <MessageSquare className="absolute left-4 top-4 text-slate-400" size={18} />
-                                <textarea
-                                    name="message"
-                                    placeholder="Your Message"
-                                    required
-                                    rows="5"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-blue-500 outline-none transition-all resize-none"
-                                ></textarea>
-                            </div>
-
-                            {status.msg && (
-                                <div className={`p-4 rounded-xl text-sm font-medium ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                                    }`}>
-                                    {status.msg}
+                                    <div className="relative">
+                                        <span className="block text-sm font-semibold mb-2 ml-1">Email Address</span>
+                                        <div className="relative">
+                                            <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                placeholder="john@example.com"
+                                                required
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                className="w-full bg-secondary border border-transparent focus:border-blue-500 rounded-2xl py-4 pl-12 pr-4 outline-none transition-all shadow-inner"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                            )}
 
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full btn btn-primary flex items-center justify-center gap-2 group"
-                            >
-                                {loading ? 'Sending...' : (
-                                    <>
-                                        Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                    </>
+                                <div className="relative">
+                                    <span className="block text-sm font-semibold mb-2 ml-1">Your Message</span>
+                                    <div className="relative">
+                                        <MessageSquare className="absolute left-4 top-4 text-slate-400" size={18} />
+                                        <textarea
+                                            name="message"
+                                            placeholder="Tell me about your project..."
+                                            required
+                                            rows="6"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            className="w-full bg-secondary border border-transparent focus:border-blue-500 rounded-2xl py-4 pl-12 pr-4 outline-none transition-all resize-none shadow-inner"
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+                                {status.msg && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className={`p-4 rounded-2xl text-sm font-semibold ${status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+                                            }`}>
+                                        {status.msg}
+                                    </motion.div>
                                 )}
-                            </button>
-                        </form>
-                    </motion.div>
+
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="w-full btn btn-primary flex items-center justify-center gap-3 group py-5 text-lg"
+                                >
+                                    {loading ? 'Sending Message...' : (
+                                        <>
+                                            Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        </>
+                                    )}
+                                </button>
+                            </form>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,39 +1,33 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ProjectCard from '../components/ProjectCard';
+import ProjectCard from '../components/ProjectCard.jsx';
 
 const Portfolio = () => {
     const [activeTab, setActiveTab] = useState('fullstack');
 
     const fullStackProjects = [
         {
-            title: "E-Commerce Platform",
-            description: "A full-featured online store with payment integration, user auth, and admin dashboard.",
-            tech: ["React", "Node.js", "MongoDB", "Stripe"],
-            github: "#",
-            live: "#",
+            title: "Rejoice Events & Decor",
+            description: "A premium full-stack event décor platform featuring service bookings, rental inventory, and categorized galleries.",
+            tech: ["Next.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind"],
+            github: "https://github.com/melody2203/Rejoice-Decor-and-Event.git",
+            live: "https://rejoice-decor-and-event-site.vercel.app/",
+            image: "/projects/rejoice-decor.png",
+            type: "fullstack"
+        },
+        {
+            title: "Movie Review App",
+            description: "A modern full-stack movie platform for discovering films, reading reviews, and exploring content.",
+            tech: ["React (Vite)", "Django REST Framework", "PostgreSQL", "Render"],
+            github: "https://github.com/melody2203/Movie-Review-App",
+            live: "https://movie-review-app-4wpr.vercel.app/",
+            image: "/projects/movie-review.png",
             type: "fullstack"
         },
         {
             title: "Task Management App",
             description: "Collaborative tool for teams to manage projects, track time, and assign tasks.",
             tech: ["React", "Express", "PostgreSQL", "Socket.io"],
-            github: "#",
-            live: "#",
-            type: "fullstack"
-        },
-        {
-            title: "Social Media Dashboard",
-            description: "Real-time analytics for social media accounts with data visualization.",
-            tech: ["React", "Node.js", "Chart.js", "Tailwind"],
-            github: "#",
-            live: "#",
-            type: "fullstack"
-        },
-        {
-            title: "Real-time Chat App",
-            description: "Secure messaging application with end-to-end encryption features.",
-            tech: ["React", "Node.js", "WebSockets", "Firebase"],
             github: "#",
             live: "#",
             type: "fullstack"
@@ -46,22 +40,11 @@ const Portfolio = () => {
             description: "A tool that analyzes password complexity and provides security recommendations.",
             tech: ["Python", "Flask", "Security APIs"],
             github: "#",
+            live: "#",
+            image: "/projects/password-checker.jpg",
             type: "cyber"
         },
-        {
-            title: "Network Port Scanner",
-            description: "Script to identify open ports and potential vulnerabilities in a given network range.",
-            tech: ["Python", "Scapy", "Linux"],
-            github: "#",
-            type: "cyber"
-        },
-        {
-            title: "Encryption Utility",
-            description: "Suite of tools for AES-256 encryption and decryption of sensitive files.",
-            tech: ["Node.js", "Crypto SDK", "React"],
-            github: "#",
-            type: "cyber"
-        }
+
     ];
 
     return (
@@ -75,24 +58,30 @@ const Portfolio = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
-                    <div className="w-20 h-1.5 bg-blue-500 mx-auto rounded-full mb-8"></div>
 
-                    {/* Tabs */}
-                    <div className="flex justify-center space-x-4 mb-12">
-                        <button
-                            onClick={() => setActiveTab('fullstack')}
-                            className={`px-6 py-2 rounded-full font-semibold transition-all ${activeTab === 'fullstack' ? 'bg-blue-500 text-white shadow-lg' : 'bg-secondary/10 hover:bg-secondary/20'
-                                }`}
-                        >
-                            Full-Stack
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('cyber')}
-                            className={`px-6 py-2 rounded-full font-semibold transition-all ${activeTab === 'cyber' ? 'bg-red-500 text-white shadow-lg' : 'bg-secondary/10 hover:bg-secondary/20'
-                                }`}
-                        >
-                            Cybersecurity
-                        </button>
+                    {/* Modern Tab Switcher */}
+                    <div className="flex justify-center mb-16 px-4">
+                        <div className="bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-[2rem] flex items-center gap-1 relative overflow-hidden backdrop-blur-md border border-white/5">
+                            {['fullstack', 'cyber'].map((tab) => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    className={`relative z-10 px-8 md:px-12 py-3.5 rounded-full text-sm font-black tracking-widest uppercase transition-colors duration-500 whitespace-nowrap ${activeTab === tab
+                                        ? 'text-white'
+                                        : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                                        }`}
+                                >
+                                    {activeTab === tab && (
+                                        <motion.div
+                                            layoutId="activeTab"
+                                            className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full shadow-[0_4px_15px_-5px_rgba(6,182,212,0.5)]"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{tab === 'fullstack' ? 'Full-Stack' : 'Cybersecurity'}</span>
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </motion.div>
 

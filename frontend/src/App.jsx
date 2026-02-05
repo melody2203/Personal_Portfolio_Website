@@ -1,10 +1,11 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Home from './sections/Home';
-import About from './sections/About';
-import Portfolio from './sections/Portfolio';
-import Services from './sections/Services';
-import Contact from './sections/Contact';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+import Home from './sections/Home.jsx';
+import About from './sections/About.jsx';
+import Skills from './sections/Skills.jsx';
+import Portfolio from './sections/Portfolio.jsx';
+import Services from './sections/Services.jsx';
+import Contact from './sections/Contact.jsx';
 
 function App() {
   return (
@@ -13,16 +14,12 @@ function App() {
       <main>
         <Home />
         <About />
+        <Skills />
         <Portfolio />
         <Services />
         <Contact />
       </main>
-
-      <footer className="py-12 border-t border-slate-200 dark:border-slate-800">
-        <div className="container text-center text-secondary">
-          <p>© {new Date().getFullYear()} Merertu Philipos. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

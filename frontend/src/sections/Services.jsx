@@ -37,7 +37,6 @@ const Services = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">What I Offer</h2>
-                    <div className="w-20 h-1.5 bg-blue-500 mx-auto rounded-full mb-8"></div>
                     <p className="max-w-2xl mx-auto text-secondary text-lg">
                         Specializing in building robust digital products with a focus on clean code,
                         interactive design, and proactive security measures.
