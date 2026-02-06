@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Code2, ShieldAlert, Heart } from 'lucide-react';
+import { GraduationCap, Code2, ShieldAlert, Heart, CloudAlert, CloudBackup, CloudFog, CloudDrizzle, CloudFogIcon } from 'lucide-react';
 
 const About = () => {
     const cards = [
         {
             icon: <GraduationCap className="text-blue-500" size={32} />,
             title: "Education",
-            description: "Software Engineering & Cybersecurity Student. Focused on modern web architectures and threat mitigation.",
+            description: "Software Engineering & Cybersecurity Student. Focused on modern web architectures and thoughtfully designed applications.",
             delay: 0.1
         },
         {
@@ -17,15 +17,15 @@ const About = () => {
             delay: 0.2
         },
         {
-            icon: <ShieldAlert className="text-red-500" size={32} />,
-            title: "Cybersecurity",
-            description: "Enthusiastic about ethical hacking, network security, and developing secure coding practices.",
+            icon: <CloudFogIcon className="text-blue-500" size={32} />,
+            title: "Cloud Computing",
+            description: "Enthusiastic about cloud concepts, cloud services, and how applications run in the cloud.",
             delay: 0.3
         },
         {
             icon: <Heart className="text-pink-500" size={32} />,
             title: "Interests",
-            description: "Outside of tech, I enjoy listening to music and playing the guitar, which helps me stay creative and inspired.",
+            description: "Outside of tech, I enjoy listening to music and playing the guitar, which helps me stay happy and inspired.",
             delay: 0.4
         }
     ];

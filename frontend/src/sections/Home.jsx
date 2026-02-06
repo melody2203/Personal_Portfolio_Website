@@ -29,7 +29,7 @@ const Home = () => {
                             }}
                         >
                             <Typewriter
-                                words={['Full-Stack Developer!', 'Problem Solver!', 'Cyber Enthusiast!']}
+                                words={['Full-Stack Developer!', 'Problem Solver!', 'Cloud Enthusiast!']}
                                 loop={true}
                                 cursor
                                 cursorStyle='|'
@@ -41,7 +41,7 @@ const Home = () => {
                     </div>
 
                     <p className="text-xl text-secondary mb-8 max-w-2xl">
-                        I build secure, scalable, and user-centric digital experiences with a passion for cybersecurity.
+                        I’m a developer focused on building scalable, user-centric applications that are clean, efficient, and impactful.
                     </p>
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                         <a href="#portfolio" className="btn btn-primary">View My Work</a>

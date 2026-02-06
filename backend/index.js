@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
@@ -13,17 +14,41 @@ app.get('/', (req, res) => {
 });
 
 // Contact Form Endpoint
-app.post('/api/contact', (req, res) => {
+app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
-    // In a real app, you would send an email or save to a database here.
-    // For this demonstration, we'll log it and return success.
     console.log(`New Message from ${name} (${email}): ${message}`);
 
-    res.status(200).json({
-        success: true,
-        message: 'Message received! Thank you for reaching out.'
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
     });
+
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        replyTo: email,
+        subject: `New Portfolio Message from ${name}`,
+        text: `You have received a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully');
+        res.status(200).json({
+            success: true,
+            message: 'Message received! Thank you for reaching out.'
+        });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to send email. Please try again later.'
+        });
+    }
 });
 
 app.listen(PORT, () => {

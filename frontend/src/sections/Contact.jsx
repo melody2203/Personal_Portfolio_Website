@@ -19,35 +19,16 @@ const Contact = () => {
 
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
-        // Robust submit function with auto-retry
-        const submitWithRetry = async (attempts = 3) => {
-            try {
-                return await axios.post(`${API_BASE_URL}/api/contact`, formData, {
-                    timeout: 45000 // 45 seconds per attempt
-                });
-            } catch (error) {
-                // If it's a network error or timeout, and we have attempts left, retry!
-                if (attempts > 1 && (error.code === 'ECONNABORTED' || !error.response)) {
-                    console.warn(`Attempt failed, retrying... (${attempts - 1} left)`);
-                    return submitWithRetry(attempts - 1);
-                }
-                throw error;
-            }
-        };
-
         try {
-            const response = await submitWithRetry();
+            const response = await axios.post(`${API_BASE_URL}/api/contact`, formData);
             if (response.status === 200) {
                 setStatus({ type: 'success', msg: 'Perfect! Your message was sent successfully.' });
                 setFormData({ name: '', email: '', message: '' });
             }
         } catch (error) {
             console.error("Submission error details:", error);
-
-            if (error.code === 'ECONNABORTED') {
-                setStatus({ type: 'error', msg: 'The server is still sleeping. Please wait 10 seconds and try one last time.' });
-            } else if (!error.response) {
-                setStatus({ type: 'error', msg: `Cannot connect to server. Please check if VITE_API_BASE_URL is set correctly in Vercel.` });
+            if (!error.response) {
+                setStatus({ type: 'error', msg: `Cannot connect to server. Please check your internet or if the server is running.` });
             } else {
                 setStatus({ type: 'error', msg: 'The server responded with an error. Please email me directly while I fix this.' });
             }
@@ -187,7 +168,7 @@ const Contact = () => {
                                     disabled={loading}
                                     className="w-full btn btn-primary flex items-center justify-center gap-3 group py-5 text-lg"
                                 >
-                                    {loading ? 'Sending (Server waking up...)' : (
+                                    {loading ? 'Sending...' : (
                                         <>
                                             Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                         </>
