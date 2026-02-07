@@ -34,11 +34,18 @@ app.post('/api/contact', async (req, res) => {
     // Use more robust SMPT config for production
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
-        port: 587,
-        secure: false, // Use STARTTLS on port 587
+        port: 465,
+        secure: true, // Revert to port 465 (SSL)
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS
+        },
+        connectionTimeout: 10000, // Wait up to 10 seconds for a connection
+        greetingTimeout: 5000,
+        socketTimeout: 15000,
+        lookup: (hostname, options, callback) => {
+            // Force IPv4 as cloud providers often have IPv6 routing issues
+            require('dns').lookup(hostname, { family: 4 }, callback);
         }
     });
 
