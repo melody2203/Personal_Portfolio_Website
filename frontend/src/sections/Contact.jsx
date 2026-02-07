@@ -17,7 +17,10 @@ const Contact = () => {
         setLoading(true);
         setStatus({ type: '', msg: '' });
 
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        if (API_BASE_URL.endsWith('/')) {
+            API_BASE_URL = API_BASE_URL.slice(0, -1);
+        }
         console.log("Attempting to send message to:", `${API_BASE_URL}/api/contact`);
 
         try {
@@ -31,7 +34,8 @@ const Contact = () => {
             if (!error.response) {
                 setStatus({ type: 'error', msg: `Cannot connect to server. Please check your internet or if the server is running.` });
             } else {
-                setStatus({ type: 'error', msg: 'The server responded with an error. Please email me directly while I fix this.' });
+                const errorMsg = error.response?.data?.message || 'The server responded with an error. Please email me directly while I fix this.';
+                setStatus({ type: 'error', msg: errorMsg });
             }
         } finally {
             setLoading(false);

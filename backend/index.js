@@ -31,8 +31,11 @@ app.post('/api/contact', async (req, res) => {
 
     console.log(`New Message from ${name} (${email}): ${message}`);
 
+    // Use more robust SMPT config for production
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // Use SSL
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS
@@ -55,10 +58,10 @@ app.post('/api/contact', async (req, res) => {
             message: 'Message received! Thank you for reaching out.'
         });
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('SERVER ERROR - Nodemailer:', error);
         res.status(500).json({
             success: false,
-            message: 'Failed to send email. Please try again later.'
+            message: `Server Error: ${error.message || 'Unknown error'}. Please check backend environment variables.`
         });
     }
 });
