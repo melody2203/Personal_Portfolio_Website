@@ -14,11 +14,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Log incoming requests for debugging
-app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.url} - Origin: ${req.headers.origin}`);
-    next();
-});
 
 app.get('/', (req, res) => {
     res.send('Portfolio Backend is running...');

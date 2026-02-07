@@ -21,7 +21,6 @@ const Contact = () => {
         if (API_BASE_URL.endsWith('/')) {
             API_BASE_URL = API_BASE_URL.slice(0, -1);
         }
-        console.log("Attempting to send message to:", `${API_BASE_URL}/api/contact`);
 
         try {
             const response = await axios.post(`${API_BASE_URL}/api/contact`, formData);
