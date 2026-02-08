@@ -30,7 +30,7 @@ const Portfolio = () => {
             tech: ["React", "Node.js", "Express.js", "PostgreSQL", "JWT"],
             github: "https://github.com/melody2203/TaskTrack.git",
             live: "https://task-track-coral.vercel.app/",
-            image: "/projects/task-track.png",
+            image: "/projects/task-track.jpg",
             type: "fullstack"
         }
     ];
