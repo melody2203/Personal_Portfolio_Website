@@ -25,11 +25,12 @@ const Portfolio = () => {
             type: "fullstack"
         },
         {
-            title: "Task Management App",
-            description: "Collaborative tool for teams to manage projects, track time, and assign tasks.",
-            tech: ["React", "Express", "PostgreSQL", "Socket.io"],
-            github: "#",
-            live: "#",
+            title: "Task Track App",
+            description: "Team-based task management application that enables project managers to assign tasks and deadlines while allowing team members to track progress and mark completed work in real time.",
+            tech: ["React", "Node.js", "Express.js", "PostgreSQL", "JWT"],
+            github: "https://github.com/melody2203/TaskTrack.git",
+            live: "https://task-track-coral.vercel.app/",
+            image: "/projects/task-track.png",
             type: "fullstack"
         }
     ];
