@@ -17,7 +17,7 @@ const ProjectCard = ({ project, index }) => {
                     <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                 ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center overflow-hidden">
