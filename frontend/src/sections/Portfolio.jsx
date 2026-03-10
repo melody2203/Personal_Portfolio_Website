@@ -11,7 +11,7 @@ const Portfolio = () => {
             description: "This project is a modern branding and marketing website for Syntax, a software development company. It showcases the company's services, portfolio, client success stories, careers, and core values, and includes a secure admin dashboard for managing dynamic content such as career postings and site updates.",
             tech: ["Next.js", "React 19", "TypeScript", "Tailwind CSS"],
             github: "#",
-            live: "#",
+            live: "https://syntax-branding-and-marketing-websi.vercel.app/",
             image: "/projects/syntax.png",
             type: "fullstack"
         },
