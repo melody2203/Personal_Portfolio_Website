@@ -7,6 +7,15 @@ const Portfolio = () => {
 
     const fullStackProjects = [
         {
+            title: "Syntax Software Solutions",
+            description: "This project is a modern branding and marketing website for Syntax, a software development company. It showcases the company's services, portfolio, client success stories, careers, and core values, and includes a secure admin dashboard for managing dynamic content such as career postings and site updates.",
+            tech: ["Next.js", "React 19", "TypeScript", "Tailwind CSS"],
+            github: "#",
+            live: "#",
+            image: "/projects/syntax.png",
+            type: "fullstack"
+        },
+        {
             title: "Rejoice Events & Decor",
             description: "A premium full-stack event décor platform featuring service bookings, rental inventory, and categorized galleries.",
             tech: ["Next.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind"],
@@ -20,7 +29,7 @@ const Portfolio = () => {
             description: "A modern full-stack movie platform for discovering films, reading reviews, and exploring content.",
             tech: ["React (Vite)", "Django REST Framework", "PostgreSQL", "Render"],
             github: "https://github.com/melody2203/Movie-Review-App",
-            live: "https://movie-review-app-4wpr.vercel.app/",
+            live: "https://movie-review-app-m62l.vercel.app/",
             image: "/projects/movie-review.png",
             type: "fullstack"
         },
